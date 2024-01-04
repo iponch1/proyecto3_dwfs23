@@ -7,7 +7,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         const data = await response.json();
 
         createChart(data);
+        
     } catch (error) {
         console.error('Error al obtener datos de la API:', error);
     }
+
+    
 });

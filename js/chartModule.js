@@ -9,17 +9,17 @@ export function createChart(response) {
         if (Array.isArray(containerProperty)) {
             console.log('Datos cargados correctamente:', containerProperty);
 
-            const charactersWithTVShows = containerProperty.filter(item => item.tvShows.length > 0);
-            const charactersWithoutTVShows = containerProperty.filter(item => item.tvShows.length === 0);
+            const personajesConShow = containerProperty.filter(item => item.tvShows.length > 0);
+            const personajesSinShow = containerProperty.filter(item => item.tvShows.length === 0);
 
-            const ctx = document.getElementById('myChart').getContext('2d');
+            const grafica = document.getElementById('miGrafica').getContext('2d');
             
-            const myChart = new Chart(ctx, {
+            const miGrafica = new Chart(grafica, {
                 type: 'doughnut',
                 data: {
                     labels: ['Personajes con show de tv', 'Personajes sin show de tv'],
                     datasets: [{
-                        data: [charactersWithTVShows.length, charactersWithoutTVShows.length],
+                        data: [personajesConShow.length, personajesSinShow.length],
                         backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)'],
                         hoverBackgroundColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
                         borderWidth: 1
@@ -27,7 +27,7 @@ export function createChart(response) {
                 }
             });
 
-            console.log('Gráfico creado exitosamente:', myChart);
+            console.log('Gráfico creado exitosamente:', miGrafica);
         } else {
             console.error('La propiedad contenedora no es un array:', containerProperty);
         }
